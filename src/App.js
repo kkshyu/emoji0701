@@ -47,6 +47,7 @@ const LoginSection = ({ onLogin }) => {
           required
         />
       </div>
+      <div className="ts-space"></div>
       <div>
         <button className="ts-button is-fluid" type="submit">
           登入
@@ -116,7 +117,8 @@ const MainSection = ({ secret, onLogout }) => {
         setOrders(
           data?.order?.map((v) => ({
             title: v.title,
-            usedPoints: v.order_member_points_aggregate?.aggregate?.sum?.points || 0,
+            usedPoints:
+              v.order_member_points_aggregate?.aggregate?.sum?.points || 0,
             createdAt: dayjs(v.createdAt),
           }))
         );
@@ -129,6 +131,9 @@ const MainSection = ({ secret, onLogout }) => {
               v.order_member_points_aggregate?.aggregate?.sum?.points || 0,
           })) || []
         );
+      })
+      .catch((error) => {
+        onLogout?.();
       });
   }, [client, setMemberPoints]);
   const handleSubmit = (e) => {
