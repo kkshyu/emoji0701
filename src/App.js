@@ -209,7 +209,7 @@ const MainSection = ({ secret, onLogout }) => {
                     title: $title
                     member_id: $memberId
                     ended_at: $endedAt
-                    points: $point
+                    points: $points
                   }
                 ) {
                   id
